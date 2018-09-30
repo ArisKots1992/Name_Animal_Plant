@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e1746e38"
+    tools:context=".ui.MainActivity">
+
+
+    <androidx.constraintlayout.widget.Placeholder
+        android:id="@+id/placeholder"
+        android:layout_width="156.25dp"
+        android:layout_height="140.5dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/marioImage"
+        android:layout_width="78.125dp"
+        android:layout_height="70.25dp"
+        android:layout_marginStart="32dp"
+        android:src="@mipmap/mario"
+        app:layout_constraintBottom_toTopOf="@+id/mickeyImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread" />
+
+    <ImageView
+        android:id="@+id/mickeyImage"
+        android:layout_width="78.125dp"
+        android:layout_height="70.25dp"
+        android:layout_marginStart="32dp"
+        android:src="@mipmap/mickey"
+        app:layout_constraintBottom_toTopOf="@+id/pikatsouImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/marioImage" />
+
+    <ImageView
+        android:id="@+id/pikatsouImage"
+        android:layout_width="78.125dp"
+        android:layout_height="70.25dp"
+        android:layout_marginStart="32dp"
+        android:src="@mipmap/pikatsu"
+        app:layout_constraintBottom_toTopOf="@+id/liloImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mickeyImage" />
+
+    <ImageView
+        android:id="@+id/liloImage"
+        android:layout_width="78.125dp"
+        android:layout_height="70.25dp"
+        android:layout_marginStart="32dp"
+        android:src="@mipmap/lilo"
+        app:layout_constraintBottom_toTopOf="@+id/worioImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pikatsouImage" />
+
+    <ImageView
+        android:id="@+id/worioImage"
+        android:layout_width="78.125dp"
+        android:layout_height="70.25dp"
+        android:layout_marginStart="32dp"
+        android:src="@mipmap/worio"
+        app:layout_constraintBottom_toTopOf="@+id/idiotImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/liloImage" />
+
+    <ImageView
+        android:id="@+id/idiotImage"
+        android:layout_width="78.125dp"
+        android:layout_height="70.25dp"
+        android:layout_marginStart="32dp"
+        android:src="@mipmap/idiot"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/worioImage" />
+    <View
+        android:id="@+id/emptyView"
+        android:layout_width="1dp"
+        android:layout_height="1dp" />
+
+    <ImageButton
+        android:id="@+id/fingerButton"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="35dp"
+        android:background="@null"
+        android:scaleType="centerInside"
+        android:src="@mipmap/fingerprint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
