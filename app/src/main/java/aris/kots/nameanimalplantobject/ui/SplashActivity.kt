@@ -15,7 +15,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        lol.text="Aristotelis"
+        lol.text="Άρης"
 
 
         val intent = Intent(this, MainActivity::class.java)
