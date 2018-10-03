@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.wifi.p2p.WifiP2pManager
 import android.widget.Toast
+import aris.kots.nameanimalplantobject.ui.AwesomeActivity
 import org.greenrobot.eventbus.EventBus
 
 
@@ -12,12 +13,12 @@ class WiFiDirectBroadcastReceiver : BroadcastReceiver {
 
     var manager: WifiP2pManager
     var channel: WifiP2pManager.Channel
-    var context: Context
+    var activity: AwesomeActivity
 
-    constructor(manager: WifiP2pManager, channel: WifiP2pManager.Channel, context: Context) : super() {
+    constructor(manager: WifiP2pManager, channel: WifiP2pManager.Channel, activity: AwesomeActivity) : super() {
         this.manager = manager
         this.channel = channel
-        this.context = context
+        this.activity = activity
     }
 
 
@@ -38,6 +39,8 @@ class WiFiDirectBroadcastReceiver : BroadcastReceiver {
                 }
             }
             WifiP2pManager.WIFI_P2P_PEERS_CHANGED_ACTION -> {
+
+                    manager.requestPeers(channel,activity.peerListener)
 
             }
             WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION -> {
