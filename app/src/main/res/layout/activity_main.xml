@@ -57,7 +57,7 @@
         android:layout_width="78.125dp"
         android:layout_height="70.25dp"
         android:layout_marginStart="32dp"
-        android:rotation="-20"
+        android:rotation="-15"
         android:src="@mipmap/lilo"
         app:layout_constraintBottom_toTopOf="@+id/worioImage"
         app:layout_constraintStart_toStartOf="parent"

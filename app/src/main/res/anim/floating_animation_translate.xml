@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android"
-    android:ordering="sequentially">
+    >
 
     <translate android:fromXDelta="0"
         android:toXDelta="25%"
@@ -17,7 +17,7 @@
     <rotate
         android:fromDegrees="0"
         android:interpolator="@android:anim/linear_interpolator"
-        android:toDegrees="40"
+        android:toDegrees="30"
         android:pivotX="50%"
         android:pivotY="50%"
         android:duration="2000"
