@@ -25,5 +25,4 @@ class ApplicationEnhanced : Application() {
                                 .build()))
                 .build())
     }
-
 }
