@@ -4,11 +4,13 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.IntentFilter
 import android.net.wifi.WifiManager
+import android.net.wifi.p2p.WifiP2pConfig
 import android.net.wifi.p2p.WifiP2pDevice
 import android.net.wifi.p2p.WifiP2pManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Looper
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import aris.kots.nameanimalplantobject.R
@@ -31,9 +33,6 @@ class AwesomeActivity : AppCompatActivity() {
     lateinit var intentFilter: IntentFilter
 
     var peers = ArrayList<WifiP2pDevice> ()
-    var deviceNames = ArrayList<String> ()
-    var devices = ArrayList<WifiP2pDevice> ()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +46,29 @@ class AwesomeActivity : AppCompatActivity() {
         initWifiButton()
 
         initScanButton()
+
+
+        deviceListView.onItemClickListener = AdapterView.OnItemClickListener {
+            _, _, i, _ ->
+
+//            Toast.makeText(this, "Name: "+peers[i].deviceName + " - Address: "+ peers[i].deviceAddress, Toast.LENGTH_SHORT).show()
+
+            val device = peers[i]
+
+            val config = WifiP2pConfig()
+            config.deviceAddress = device.deviceAddress
+
+            wifiP2pManager.connect(channel,config, object: WifiP2pManager.ActionListener{
+                override fun onSuccess() {
+//                    titleTextView.text = "Connected to: " + device.deviceName
+                    Toast.makeText(this@AwesomeActivity, "Connected to: " + device.deviceName, Toast.LENGTH_SHORT).show()
+                }
+
+                override fun onFailure(p0: Int) {
+                    Toast.makeText(this@AwesomeActivity, "FAILED to: " + device.deviceName, Toast.LENGTH_SHORT).show()
+                }
+            })
+        }
 
 
     }
@@ -149,19 +171,20 @@ class AwesomeActivity : AppCompatActivity() {
             peers.clear()
             peers.addAll(peerList.deviceList)
 
-            for(device in peerList.deviceList){
-                deviceNames.add(device.deviceName)
-                devices.add(device)
-            }
-
-            val adapter= ArrayAdapter(applicationContext,android.R.layout.simple_expandable_list_item_1,deviceNames)
+            val adapter= ArrayAdapter(applicationContext,android.R.layout.simple_expandable_list_item_1,peers.map { it.deviceName })
             deviceListView.adapter = adapter
 
             if(peers.size ==0)
                 titleTextView.text="No devices found!"
         }
     }
-
+    val connectionListener = WifiP2pManager.ConnectionInfoListener {
+        if(it.groupFormed && it.isGroupOwner){
+            titleTextView.text="HOST"
+        }else{
+            titleTextView.text="CLIENT"
+        }
+    }
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(ViewPumpContextWrapper.wrap(newBase))
     }

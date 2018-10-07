@@ -3,9 +3,11 @@ package aris.kots.nameanimalplantobject.events
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.net.NetworkInfo
 import android.net.wifi.p2p.WifiP2pManager
 import android.widget.Toast
 import aris.kots.nameanimalplantobject.ui.AwesomeActivity
+import kotlinx.android.synthetic.main.activity_awesome.*
 import org.greenrobot.eventbus.EventBus
 
 
@@ -44,6 +46,13 @@ class WiFiDirectBroadcastReceiver : BroadcastReceiver {
 
             }
             WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION -> {
+
+                val networkInfo = intent.getParcelableExtra<NetworkInfo>(WifiP2pManager.EXTRA_NETWORK_INFO)
+
+                if(networkInfo.isConnected)
+                    manager.requestConnectionInfo(channel,activity.connectionListener)
+                else
+                    activity.titleTextView.text="Disconnected"
 
             }
             WifiP2pManager.WIFI_P2P_THIS_DEVICE_CHANGED_ACTION -> {

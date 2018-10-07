@@ -54,11 +54,11 @@
 
     <ImageView
         android:id="@+id/liloImage"
-        android:layout_width="78.125dp"
-        android:layout_height="70.25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:rotation="-15"
-        android:src="@mipmap/lilo"
+        android:rotation="-8"
+        android:src="@drawable/dashboard_spaceship_line_icon"
         app:layout_constraintBottom_toTopOf="@+id/worioImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pikatsouImage" />
